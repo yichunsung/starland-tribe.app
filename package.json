@@ -3,8 +3,15 @@
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
+    "dev": "ng serve --open",
     "start": "ng serve",
     "build": "ng build",
+    "build:app": "npm run electron:build && ng build --prod --base-href ./ && npm run electron:dev",
+    "app:dev": "npm run build && npm run electron:serve",
+    "electron:serve-tsc": "tsc -p tsconfig.serve.json",
+    "electron:serve": "npm run electron:serve-tsc && electron ./build-app/main.js --serve",
+    "electron:build": "tsc ./electron/main.ts --outDir ./build-app",
+    "electron:dev": "electron ./build-app/main.js",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e"
@@ -19,6 +26,7 @@
     "@angular/platform-browser": "~11.1.1",
     "@angular/platform-browser-dynamic": "~11.1.1",
     "@angular/router": "~11.1.1",
+    "electron": "^11.3.0",
     "rxjs": "~6.6.0",
     "tslib": "^2.0.0",
     "zone.js": "~0.11.3"

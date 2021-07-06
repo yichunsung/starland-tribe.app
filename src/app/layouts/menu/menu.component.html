@@ -1,1 +1,16 @@
-<p>menu works!</p>
+<div *ngFor="let menuItem of menuList; index as idx">
+  <button type="button" class="nes-btn is-primary">{{ menuItem.title }}</button>
+</div>
+
+<div>
+  Company ID: {{ organizationData.id }}
+</div>
+<div>
+  Company Name: {{ organizationData.company_name }}
+</div>
+<div>
+  Company Building Date: {{ organizationData.building_date | date:'yyyy-MM-dd HH:mm:ss' }}
+</div>
+<div>
+  Company Address: {{ organizationData.address }}
+</div>

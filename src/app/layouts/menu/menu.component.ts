@@ -1,4 +1,26 @@
 import { Component, OnInit } from '@angular/core';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Observable } from 'rxjs';
+
+interface MenuItem {
+  id: number;
+  title: string;
+  style: string;
+  path: string;
+}
+
+interface Organization {
+  id: number;
+  company_name: string;
+  building_date: string;
+  address: string;
+}
+
+interface APIReturn {
+  status: number;
+  message: string;
+  data: Organization[];
+}
 
 @Component({
   selector: 'app-menu',
@@ -7,9 +29,53 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MenuComponent implements OnInit {
 
-  constructor() { }
+  private apiUrl: string = 'https://fable-api.elk-tree.site/api/organizations';
+
+  public menuList: MenuItem[] = [
+    {
+      id: 1,
+      title: 'New Game',
+      style: 'is-primary',
+      path: '/game'
+    },
+    {
+      id: 2,
+      title: 'Load Game',
+      style: 'is-primary',
+      path: '/game'
+    },
+    {
+      id: 3,
+      title: 'Settings',
+      style: 'is-primary',
+      path: '/game'
+    },
+    {
+      id: 4,
+      title: 'Quit',
+      style: 'is-error',
+      path: '/game'
+    }
+  ];
+
+  public organizationData: Organization = {
+    id: 0,
+    company_name: '',
+    building_date: '',
+    address: ''
+  };
+
+  constructor(private http: HttpClient) { }
 
   ngOnInit(): void {
+    this.getDataFromAPI().subscribe((res) => {
+      this.organizationData = res.data[0];
+      console.log(res.data[0]);
+   });
   }
 
+  getDataFromAPI(): Observable<APIReturn> {
+    console.log(this.apiUrl);
+    return this.http.get<APIReturn>(this.apiUrl);
+  }
 }

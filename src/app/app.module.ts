@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 import { LayoutsModule } from './layouts/layouts.module';
+import { GameModule } from './game/game.module';
 
 @NgModule({
   declarations: [
@@ -14,6 +15,7 @@ import { LayoutsModule } from './layouts/layouts.module';
     BrowserModule,
     AppRoutingModule,
     LayoutsModule,
+    GameModule,
     HttpClientModule
   ],
   providers: [],

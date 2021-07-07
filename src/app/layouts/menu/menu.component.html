@@ -1,16 +1,24 @@
-<div *ngFor="let menuItem of menuList; index as idx">
-  <button type="button" class="nes-btn is-primary">{{ menuItem.title }}</button>
-</div>
-
-<div>
-  Company ID: {{ organizationData.id }}
-</div>
-<div>
-  Company Name: {{ organizationData.company_name }}
-</div>
-<div>
-  Company Building Date: {{ organizationData.building_date | date:'yyyy-MM-dd HH:mm:ss' }}
-</div>
-<div>
-  Company Address: {{ organizationData.address }}
-</div>
+<section class="menu-section">
+  <main class="menu-container">
+    <div class="menu-item" *ngFor="let menuItem of menuList; index as idx">
+      <button
+        type="button"
+        class="nes-btn"
+        [class]="menuItem.style"
+        (click)="clickToPage(menuItem.path)"
+      >
+        {{ menuItem.title }}
+      </button>
+    </div>
+  </main>
+  <dialog class="nes-dialog is-dark is-rounded" [open]="isDialogOpen">
+    <form method="dialog">
+      <p class="title">Are You Sure ?</p>
+       <p class="title">Do You Want to Quit the Game ?</p>
+      <menu class="dialog-menu flex-box">
+        <button class="nes-btn" (click)="closeQuitDialog()">Cancel</button>
+        <button class="nes-btn is-primary" (click)="closeQuitDialog()">Confirm</button>
+      </menu>
+    </form>
+  </dialog>
+</section>

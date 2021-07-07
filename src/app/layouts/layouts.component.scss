@@ -1,0 +1,26 @@
+.layouts-frame {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  flex-wrap: wrap;
+  width: 100vw;
+  height: 100vh;
+
+  header.layouts-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: auto;
+
+    div.header-logo {
+      width: 90vw;
+      height: 36vw;
+      background-image: url('../../assets/images/logo.png');
+      background-size: 100% 100%;
+      background-repeat: no-repeat;
+    }
+  }
+}
+

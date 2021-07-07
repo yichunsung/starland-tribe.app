@@ -1,21 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
+// Services
+import { MenuService } from './menu.service';
 // interfaces
-import { MenuItem } from '../interfaces/menu.interface';
-
-interface Organization {
-  id: number;
-  company_name: string;
-  building_date: string;
-  address: string;
-}
-
-interface APIReturn {
-  status: number;
-  message: string;
-  data: Organization[];
-}
+import { MenuItem, Organization } from '../interfaces/menu.interface';
 
 @Component({
   selector: 'app-menu',
@@ -24,34 +13,7 @@ interface APIReturn {
 })
 export class MenuComponent implements OnInit {
 
-  private apiUrl: string = 'https://fable-api.elk-tree.site/api/organizations';
-
-  public menuList: MenuItem[] = [
-    {
-      id: 1,
-      title: 'New Game',
-      style: 'is-primary',
-      path: '/game'
-    },
-    {
-      id: 2,
-      title: 'Load Game',
-      style: 'is-primary',
-      path: '/game'
-    },
-    {
-      id: 3,
-      title: 'Settings',
-      style: 'is-primary',
-      path: '/game'
-    },
-    {
-      id: 4,
-      title: 'Quit Game',
-      style: 'is-error',
-      path: '/game'
-    }
-  ];
+  public menuList: MenuItem[] = [];
 
   public organizationData: Organization = {
     id: 0,
@@ -60,17 +22,25 @@ export class MenuComponent implements OnInit {
     address: ''
   };
 
-  constructor(private http: HttpClient) { }
+  constructor(
+    private menuService: MenuService
+  ) {}
 
   ngOnInit(): void {
-    this.getDataFromAPI().subscribe((res) => {
-      this.organizationData = res.data[0];
-      console.log(res.data[0]);
-   });
+    this.getMenuList();
+    this.getDataFromAPI();
   }
 
-  getDataFromAPI(): Observable<APIReturn> {
-    console.log(this.apiUrl);
-    return this.http.get<APIReturn>(this.apiUrl);
+  getMenuList(): void {
+    this.menuService.displayMenuData()
+      .subscribe(item => this.menuList.push(item));
+  }
+
+  getDataFromAPI(): void {
+    this.menuService.requestTestData()
+      .subscribe((res) => {
+        this.organizationData = res.data[0];
+        console.log(res.data[0]);
+      });
   }
 }

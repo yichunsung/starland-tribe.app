@@ -1,7 +1,9 @@
 <section class="menu-section">
   <main class="menu-container">
     <div class="menu-item" *ngFor="let menuItem of menuList; index as idx">
-      <button type="button" class="nes-btn" [class]="menuItem.style">{{ menuItem.title }}</button>
+      <span class="nes-text" [class]="menuItem.style">
+        {{ menuItem.title }}
+      </span>
     </div>
   </main>
 </section>

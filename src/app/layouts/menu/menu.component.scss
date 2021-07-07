@@ -1,0 +1,25 @@
+section.menu-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  width: 100vw;
+  height: auto;
+
+  main.menu-container {
+    div.menu-item {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+}
+
+.flex-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
+}

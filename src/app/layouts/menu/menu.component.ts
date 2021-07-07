@@ -1,13 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable } from 'rxjs';
-
-interface MenuItem {
-  id: number;
-  title: string;
-  style: string;
-  path: string;
-}
+// interfaces
+import { MenuItem } from '../interfaces/menu.interface';
 
 interface Organization {
   id: number;
@@ -52,7 +47,7 @@ export class MenuComponent implements OnInit {
     },
     {
       id: 4,
-      title: 'Quit',
+      title: 'Quit Game',
       style: 'is-error',
       path: '/game'
     }

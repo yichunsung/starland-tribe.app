@@ -1,2 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
 @import "../node_modules/nes.css/css/nes.css";
+
+@font-face {
+  font-family: 'Kongtext';
+  src:
+    url('./assets/font/kongtext.ttf') format('truetype')
+}
+
+html, body {
+  background-color: #e6ffe6;
+}
+
+html, body, pre, code, kbd, samp {
+  font-family: 'Kongtext', sans-serif;
+}
+
+button {
+  outline: none;
+}

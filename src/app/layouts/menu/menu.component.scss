@@ -4,7 +4,7 @@ section.menu-section {
   align-items: center;
   flex-wrap: wrap;
   width: 100vw;
-  height: 100vh;
+  height: auto;
 
   main.menu-container {
     div.menu-item {
@@ -15,4 +15,11 @@ section.menu-section {
       margin-bottom: 20px;
     }
   }
+}
+
+.flex-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0;
 }

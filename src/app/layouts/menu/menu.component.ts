@@ -1,5 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+import { Location } from '@angular/common';
 import { Observable } from 'rxjs';
 // Services
 import { MenuService } from './menu.service';
@@ -22,13 +24,29 @@ export class MenuComponent implements OnInit {
     address: ''
   };
 
+  public isDialogOpen: boolean = false;
+
   constructor(
-    private menuService: MenuService
+    private menuService: MenuService,
+    private router: Router,
+    private location: Location,
   ) {}
 
   ngOnInit(): void {
     this.getMenuList();
     this.getDataFromAPI();
+  }
+
+  clickToPage(path: string): void {
+    if (path !== '/quit') {
+      this.router.navigate([path]);
+    } else {
+      this.isDialogOpen = true;
+    }
+  }
+
+  closeQuitDialog(): void {
+    this.isDialogOpen = false;
   }
 
   getMenuList(): void {

@@ -5,10 +5,20 @@
         type="button"
         class="nes-btn"
         [class]="menuItem.style"
-        [routerLink]="menuItem.path"
+        (click)="clickToPage(menuItem.path)"
       >
         {{ menuItem.title }}
       </button>
     </div>
   </main>
+  <dialog class="nes-dialog is-dark is-rounded" [open]="isDialogOpen">
+    <form method="dialog">
+      <p class="title">Are You Sure ?</p>
+       <p class="title">Do You Want to Quit the Game ?</p>
+      <menu class="dialog-menu flex-box">
+        <button class="nes-btn" (click)="closeQuitDialog()">Cancel</button>
+        <button class="nes-btn is-primary" (click)="closeQuitDialog()">Confirm</button>
+      </menu>
+    </form>
+  </dialog>
 </section>

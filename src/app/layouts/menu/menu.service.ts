@@ -34,7 +34,7 @@ export class MenuService {
       id: 4,
       title: 'Quit Game',
       style: 'is-error',
-      path: '/game'
+      path: '/quit'
     }
   ];
 

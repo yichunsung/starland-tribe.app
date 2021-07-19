@@ -49,7 +49,7 @@ export class GameComponent implements AfterViewInit {
     const newContainer = new PIXI.Container();
     this.gameApp.stage.addChild(newContainer);
     // const PIXIText = new PIXI.Text('這是一段話');
-    const role = PIXI.Sprite.from('https://cdnb.artstation.com/p/assets/images/images/000/741/959/large/tyler-ryan-recon016.jpg?1474548194');
+    const role = PIXI.Sprite.from('../../assets/images/logo.png');
     role.anchor.set(0.3);
     role.x = this.gameApp.screen.width / 3;
     role.y = this.gameApp.screen.height / 2;

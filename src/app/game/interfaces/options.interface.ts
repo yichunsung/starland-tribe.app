@@ -2,6 +2,7 @@ export interface PixiDefaultOption {
   width: number;
   height: number;
   antialias: boolean;
-  transparent: boolean;
+  autoDensity: boolean;
+  alpha: number;
   backgroundColor: number;
 }

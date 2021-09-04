@@ -22,3 +22,12 @@ Build for app
 $ npm run build:app
 
 ```
+
+
+## PIXI Document
+
+
+
+## Resource
+
+[pixelartmaker](http://pixelartmaker.com/gallery)
